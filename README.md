@@ -10,3 +10,6 @@
   - python 3.6
   - torch 1.7.0
   - torchvision 0.8.0
+
+## 개발환경 설정
+### Serbot Prime을 사용하는 경우
