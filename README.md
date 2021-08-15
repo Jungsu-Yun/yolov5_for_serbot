@@ -15,7 +15,7 @@
 Serbot에는 Pytorch 1.4가 설치되어 있다. YoloV5의 핵심적인 컨셉 중 하나인 `SiLU`를 사용하기 위해서는 `PyTorch 1.7` 이상의 버전이 필요하다. Pytorch를 업그레이드 및 설치하는 방법은 다음과 같다.
 ```shell
 $ cd ~/
-wget https://nvidia.box.com/shared/static/wa34qwrwtk9njtyarwt5nvo6imenfy26.whl -O torch-1.7.0-cp36-cp36m-linux_aarch64.whl
+$ wget https://nvidia.box.com/shared/static/wa34qwrwtk9njtyarwt5nvo6imenfy26.whl -O torch-1.7.0-cp36-cp36m-linux_aarch64.whl
 $ pip3 install torch-1.7.0-cp36-cp36m-linux_aarch64.whl
 ```
 정상적으로 설치가 완료되었다면 `Python3`를 실행하고 Pytorch Version이 정상적으로 나오는지 확인한다.
@@ -43,3 +43,10 @@ $ sudo python3 setup.py install
 ```
 
 ### Python Package 설치
+Serbot에는 기존 머신러닝을 위한 모듈이 설치되어 있기 때문에 추가 Package를 설치해줄 것이 한가지 뿐이다. `tqdm` 모듈은 `train`, `detect` 등 작업을 수행할 때 진척도를 표기해주는 모듈이다. 해당 모듈을 `pip`명령어로 설치를 해주도록 한다.
+
+```shell
+$ pip3 install tqdm
+```
+
+## __초기 구동하기__
