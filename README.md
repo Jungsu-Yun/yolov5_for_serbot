@@ -1,5 +1,5 @@
-# Yolo V5 for Nvidia Jetson Xavier
-해당 Repository는 Nvidia Jetson Xavier AGX 보드에서 yolov5를 동작하고 객체 검출값을 화면에 출력하는 리포지토리 입니다.
+# Yolo V5 Deepsort for Serbot Prime
+해당 Repository는 Nvidia Jetson Xavier보드 탑재되어 있는 Serbot Prime 제품에 YoloV5환경 구축 및 Coco Dataset 기반의 YoloV5 모델의 detection 및 Deepsort를 활용한 객체 분류를 수행합니다.
 
 ## 개발환경
 - __Hardware__
@@ -12,4 +12,4 @@
   - torchvision 0.8.0
 
 ## 개발환경 설정
-### Serbot Prime을 사용하는 경우
+### Pytorch, Torchvision 설치
