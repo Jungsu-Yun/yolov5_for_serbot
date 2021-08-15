@@ -22,7 +22,7 @@ $ pip3 install torch-1.7.0-cp36-cp36m-linux_aarch64.whl
 
 ```python
 >> import torch as nn
->> print(torch)
+>> print(nn.__version__)
 >> 1.7.0
 ```
 `Pytorch`가 설치 완료되었다면 이제 영상처리를 위한 `Torchvision`을 설치해야 한다. `Torchvision`은 `Pytorch` 버전에 종속적으로 설치되어야 하기 때문에 우리는 `0.8.0` 버전을 설치할 것이다.
@@ -34,3 +34,12 @@ $ cd torchvision
 $ export BUILD_VERSION=0.8.0
 $ sudo python3 setup.py install
 ```
+
+정상적으로 설치가 완료되었다면 `Python3`를 실행하고 Torchvision의 Version이 정상적으로 나오는지 확인한다.
+```python
+>> import torchvision as vision
+>> print(vision.__verision__)
+>> 0.8.0a
+```
+
+### Python Package 설치
