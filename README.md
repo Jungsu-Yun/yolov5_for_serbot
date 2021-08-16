@@ -1,5 +1,5 @@
 # __Yolo V5 Deepsort for Serbot Prime__
-해당 Repository는 Nvidia Jetson Xavier보드 탑재되어 있는 Serbot Prime 제품에 YoloV5환경 구축 및 Coco Dataset 기반의 YoloV5 모델의 detection 및 Deepsort를 활용한 객체 분류를 수행합니다.
+해당 Repository는 Nvidia Jetson Xavier보드 탑재되어 있는 Serbot Prime 제품에 YoloV5환경 구축 및 Coco Dataset 기반의 YoloV5 모델의 detection을 수행합니다.
 ### 개발환경
 - __Hardware__
   - Nvidia Jetson Xavier AGX Board
