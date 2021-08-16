@@ -42,11 +42,26 @@ $ sudo python3 setup.py install
 >> 0.8.0a
 ```
 
-### Python Package 설치
+### Python 의존성 Package 설치
 Serbot에는 기존 머신러닝을 위한 모듈이 설치되어 있기 때문에 추가 Package를 설치해줄 것이 한가지 뿐이다. `tqdm` 모듈은 `train`, `detect` 등 작업을 수행할 때 진척도를 표기해주는 모듈이다. 해당 모듈을 `pip`명령어로 설치를 해주도록 한다.
 
 ```shell
 $ pip3 install tqdm
 ```
+### yolov5 모듈 설치하기
+이제 yolov5와 관련된 모듈을 설치할 것이다. `github`에서 리포지토리를 다운받아 설치를 진행한다.
 
-## __초기 구동하기__
+```shell
+$ cd ~/
+$ git clone https://github.com/jungsuyun/yolov5_for_serbot.git
+$ cd yolov5_for_serbot
+$ sudo python setup.py install --record files.txt
+```
+
+## __동작 테스트__
+```shell
+$ cd ~/yolov5_for_serbot/yolov5
+$ wget https://github.com/ultralytics/yolov5/releases/download/v5.0/yolov5s.pt
+$ python3 detect.py --source data/images/zidane.jpg --weights yolov5s.pt
+```
+![테스트 결과](yolov5/runs/detect/exp3/zidane.jpg)
