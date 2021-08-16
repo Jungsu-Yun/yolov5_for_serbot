@@ -133,6 +133,7 @@ if cammera.isOpened():
             class_name = model.model.names[int(categories[i])]
             cv2.rectangle(frame, c1, c2, (255, 255, 0), cv2.LINE_4)
             cv2.putText(frame, (class_name + "/" + str(confidence)), (c1[0], c1[1] - 2), cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 255), cv2.LINE_4)
+    cv2.imshow("output", frame)
 else:
   print("Not Found Camera!")
 ```
