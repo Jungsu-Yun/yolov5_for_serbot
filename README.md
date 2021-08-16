@@ -65,3 +65,74 @@ $ wget https://github.com/ultralytics/yolov5/releases/download/v5.0/yolov5s.pt
 $ python3 detect.py --source data/images/zidane.jpg --weights yolov5s.pt
 ```
 ![테스트 결과](yolov5/runs/detect/exp3/zidane.jpg)
+
+## __라이브러리 활용 예제__
+### 웹캠에서 한프레임 읽어와서 추정값 출력하기
+```python
+from yolov5 import YOLOv5
+from pop import Util
+import cv2
+
+Util.enable_imshow()
+
+cam = Util.gstrmer(width=640, height=480)
+camera = cv2.VideoCapture(cam, cv2.CAP_GSTREAMER)
+
+if cammera.isOpened():
+  model_path = "yolov5s.pt" #만약 학습한 데이터를 사용한다면 pt파일의 절대경로를 입력할 것!
+  model = YOLOv5(model_path)
+
+  ret, frame = camera.read()
+  results = model.predict(frame)
+
+  predictions = results.pred[0]
+  boxes = predictions[:, :4]
+  scores = predictions[:, 4]
+  categories = predictions[:, 5]
+
+  if(len(predictions) > 0):
+      for i in range(len(predictions)):
+          c1, c2 = (int(boxes[i][0]), int(boxes[i][1])), (int(boxes[i][2]), int(boxes[i][3]))
+          confidence = round(float(scores[i]), 2)
+          class_name = model.model.names[int(categories[i])]
+          print(c1, c2, confidence, class_name)
+          cv2.rectangle(frame, c1, c2, (255, 255, 0), cv2.LINE_4)
+          cv2.putText(frame, (class_name + "/" + str(confidence)), (c1[0], c1[1] - 2), cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 255), cv2.LINE_4)
+else:
+  print("Not Found Camera!")
+```
+
+### 웹캠 영상에 BBOX, class, name, confidence 출력하기
+```python
+from yolov5 import YOLOv5
+from pop import Util
+import cv2
+
+Util.enable_imshow()
+
+cam = Util.gstrmer(width=640, height=480)
+camera = cv2.VideoCapture(cam, cv2.CAP_GSTREAMER)
+
+if cammera.isOpened():
+  model_path = "yolov5s.pt" #만약 학습한 데이터를 사용한다면 pt파일의 절대경로를 입력할 것!
+  model = YOLOv5(model_path)
+
+  while True:
+    ret, frame = camera.read()
+    results = model.predict(frame)
+
+    predictions = results.pred[0]
+    boxes = predictions[:, :4]
+    scores = predictions[:, 4]
+    categories = predictions[:, 5]
+
+    if(len(predictions) > 0):
+        for i in range(len(predictions)):
+            c1, c2 = (int(boxes[i][0]), int(boxes[i][1])), (int(boxes[i][2]), int(boxes[i][3]))
+            confidence = round(float(scores[i]), 2)
+            class_name = model.model.names[int(categories[i])]
+            cv2.rectangle(frame, c1, c2, (255, 255, 0), cv2.LINE_4)
+            cv2.putText(frame, (class_name + "/" + str(confidence)), (c1[0], c1[1] - 2), cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 255), cv2.LINE_4)
+else:
+  print("Not Found Camera!")
+```
